@@ -1,20 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import {
-  ForceBooleanComponentEnum,
   PoButtonModule,
-  PoDynamicFormField,
-  PoDynamicFormFieldChanged,
-  PoDynamicFormValidation,
   PoDynamicModule,
   PoInfoModule,
-  PoMenuItem,
   PoMenuModule,
-  PoModalAction,
-  PoModalComponent,
   PoModalModule,
+  PoModule,
   PoNotificationService,
   PoPageModule,
   PoToolbarModule,
@@ -26,6 +20,10 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, Reactive
   selector: 'app-root',
   standalone: true,
   imports: [
+    ReactiveFormsModule,
+    PoModule,
+    ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     RouterOutlet,
     PoToolbarModule,
@@ -33,17 +31,15 @@ import { UntypedFormGroup, UntypedFormBuilder, Validators, FormsModule, Reactive
     PoPageModule,
     PoButtonModule,
     PoDynamicModule,
-    FormsModule,
     PoModalModule,
     PoInfoModule,
-    ReactiveFormsModule
   ],
   providers: [PoDynamicFormContainerService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  reactiveForm: UntypedFormGroup = {} as UntypedFormGroup;
+  reactiveForm!: UntypedFormGroup;
 
   constructor(private fb: UntypedFormBuilder,
     public poNotification: PoNotificationService,
